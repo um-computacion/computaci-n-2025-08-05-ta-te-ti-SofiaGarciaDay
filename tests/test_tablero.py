@@ -1,5 +1,5 @@
 import unittest
-from clases.tablero import Tablero, posicionOcupadaException
+from clases.clase_tablero import Tablero, posicionOcupadaException
 
 class TestTablero(unittest.TestCase):
 
@@ -7,13 +7,12 @@ class TestTablero(unittest.TestCase):
         self.tablero = Tablero()
 
     def test_get_vacio(self):
-        
         self.assertFalse(self.tablero.getLleno())
 
     def test_poner_ficha(self):
        
-        self.tablero.ponerFicha("O", 2, 2)  
-        self.tablero.ponerFicha("X", 1, 1)  
+        self.tablero.poner_la_ficha("O", 2, 2)  
+        self.tablero.poner_la_ficha("X", 1, 1)  
         self.assertEqual(self.tablero.contenedor[2][2], "O")
         self.assertEqual(self.tablero.contenedor[1][1], "X")
         self.assertEqual(self.tablero.contenedor[0][0], "")
@@ -25,9 +24,9 @@ class TestTablero(unittest.TestCase):
         self.assertEqual(self.tablero.contenedor[2][1], "")
 
     def test_poner_ficha_en_posicion_ocupada(self):
-        self.tablero.ponerFicha("O", 2, 2)
+        self.tablero.poner_la_ficha("O", 2, 2)
         with self.assertRaises(posicionOcupadaException):
-            self.tablero.ponerFicha("X", 2, 2)
+            self.tablero.poner_la_ficha("X", 2, 2)
 
     def test_tablero_lleno(self):
         
@@ -37,7 +36,7 @@ class TestTablero(unittest.TestCase):
             ("O", 2, 0), ("X", 2, 1), ("O", 2, 2)
         ]
         for ficha, fila, col in movimientos:
-            self.tablero.ponerFicha(ficha, fila, col)
+            self.tablero.poner_la_ficha(ficha, fila, col)
         self.assertTrue(self.tablero.getLleno())
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 import unittest
-from clases.jugador import Jugador
+from clases.clase_jugador import Jugador
 
 class TestJugador(unittest.TestCase):
 
